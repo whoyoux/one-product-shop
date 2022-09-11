@@ -2,8 +2,16 @@ import type { NextPage } from "next";
 import Head from "next/head";
 
 import { ShoppingCartSimple } from "phosphor-react";
+import { useEffect } from "react";
+import { useCartContext } from "../context/CartContext";
 
 const Home: NextPage = () => {
+  const { getItemQuantity, increaseCartQuantity, cartQuantity } =
+    useCartContext();
+
+  useEffect(() => {
+    console.log(cartQuantity);
+  }, [cartQuantity]);
   return (
     <>
       <Head>
@@ -24,10 +32,13 @@ const Home: NextPage = () => {
           <h1 className="text-4xl font-title">IPhone 14 Pro</h1>
           <h2 className="text-xl text-gray-500">256GB, Space Gray</h2>
 
-          <h2 className="text-3xl font-title my-5 md:my-10">999 $</h2>
+          <h2 className="text-3xl font-title my-5 md:my-10">$ 999</h2>
 
           <h4 className="mb-4 text-gray-500">Free shipping to EU countries</h4>
-          <button className="flex items-center gap-2 p-4 bg-red-500 rounded-lg text-white hover:bg-red-600 mb-20 md:mb-0">
+          <button
+            className="flex items-center gap-2 p-4 bg-red-500 rounded-lg text-white hover:bg-red-600 mb-20 md:mb-0"
+            onClick={() => increaseCartQuantity("ip14")}
+          >
             Add to cart <ShoppingCartSimple size={16} weight="bold" />
           </button>
         </div>
