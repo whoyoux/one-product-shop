@@ -6,8 +6,7 @@ import { useEffect } from "react";
 import { useCartContext } from "../context/CartContext";
 
 const Home: NextPage = () => {
-  const { getItemQuantity, increaseCartQuantity, cartQuantity } =
-    useCartContext();
+  const { increaseCartQuantity, cartQuantity } = useCartContext();
 
   useEffect(() => {
     console.log(cartQuantity);

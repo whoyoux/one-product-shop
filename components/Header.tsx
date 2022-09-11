@@ -3,7 +3,7 @@ import React from "react";
 
 const Header = () => {
   return (
-    <header className="w-screen flex justify-between items-center py-6 px-5 sticky bg-white top-0 left-0 right-0 border-b z-10">
+    <header className="w-full flex justify-between items-center py-6 px-5 sticky bg-white top-0 left-0 right-0 border-b z-10">
       <div>
         <button className="rounded-lg hover:bg-gray-200 p-2">
           <List size={32} weight="bold" />

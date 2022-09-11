@@ -41,10 +41,8 @@ export function CartProvider({ children }: CartProviderProps) {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
   };
 
-  const cartQuantity = cartItems.reduce(
-    (quantity, item) => item.quantity + quantity,
-    0
-  );
+  const cartQuantity =
+    cartItems?.reduce((quantity, item) => item.quantity + quantity, 0) || 0;
 
   function increaseCartQuantity(id: string) {
     setCartItems((currItems) => {
