@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { List, ShoppingCartSimple, X } from "phosphor-react";
 import { useState } from "react";
 
@@ -19,17 +20,23 @@ const Header = () => {
           </button>
         </div>
         <div>
-          <h1 className="text-2xl font-medium">One Product Shop</h1>
+          <Link href="/" passHref>
+            <h1 className="text-2xl font-medium cursor-pointer">
+              One Product Shop
+            </h1>
+          </Link>
         </div>
         <div>
-          <button className="rounded-lg hover:bg-gray-200 p-2">
-            <ShoppingCartSimple size={32} weight="bold" />
-            {cartQuantity > 0 && (
-              <span className="inline-flex absolute top-3 right-3 justify-center items-center w-6 h-6 text-xs font-bold text-white bg-red-500 rounded-full">
-                {cartQuantity}
-              </span>
-            )}
-          </button>
+          <Link href="/checkout" passHref>
+            <button className="rounded-lg hover:bg-gray-200 p-2">
+              <ShoppingCartSimple size={32} weight="bold" />
+              {cartQuantity > 0 && (
+                <span className="inline-flex absolute top-3 right-3 justify-center items-center w-6 h-6 text-xs font-bold text-white bg-red-500 rounded-full">
+                  {cartQuantity}
+                </span>
+              )}
+            </button>
+          </Link>
         </div>
       </header>
       {isOpen && (

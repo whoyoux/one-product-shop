@@ -5,6 +5,16 @@ import { ShoppingCartSimple } from "phosphor-react";
 import { useEffect } from "react";
 import { useCartContext } from "../context/CartContext";
 
+const product = {
+  id: "prod_MPn2hytSZWer68",
+  active: true,
+  description: "Very kox phone",
+  images: [
+    "https://files.stripe.com/links/MDB8YWNjdF8xSzk3Vk1McE9ySGZxYzZHfGZsX3Rlc3RfSEQ1VnVDTGRxODlkclVoblNRajlpZWlY005onTxPIM",
+  ],
+  name: "IPhone 14 Pro Max",
+};
+
 const Home: NextPage = () => {
   const { increaseCartQuantity, cartQuantity } = useCartContext();
 
@@ -36,7 +46,7 @@ const Home: NextPage = () => {
           <h4 className="mb-4 text-gray-500">Free shipping to EU countries</h4>
           <button
             className="flex items-center gap-2 p-4 bg-red-500 rounded-lg text-white hover:bg-red-600 mb-20 md:mb-0"
-            onClick={() => increaseCartQuantity("ip14")}
+            onClick={() => increaseCartQuantity(product)}
           >
             Add to cart <ShoppingCartSimple size={16} weight="bold" />
           </button>

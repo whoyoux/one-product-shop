@@ -5,14 +5,22 @@ type CartProviderProps = {
   children: ReactNode;
 };
 
-type CartItemProps = {
+type ItemProps = {
   id: string;
-  quantity: number;
+  name: string;
+  description: string;
+  images: string[];
+  active: boolean;
 };
 
+interface CartItemProps extends ItemProps {
+  quantity: number;
+}
+
 type ICartContext = {
+  cartItems: CartItemProps[];
   getItemQuantity: (id: string) => number;
-  increaseCartQuantity: (id: string) => void;
+  increaseCartQuantity: (id: ItemProps) => void;
   decreaseCartQuantity: (id: string) => void;
   removeFromCart: (id: string) => void;
   cartQuantity: number;
@@ -44,13 +52,19 @@ export function CartProvider({ children }: CartProviderProps) {
   const cartQuantity =
     cartItems?.reduce((quantity, item) => item.quantity + quantity, 0) || 0;
 
-  function increaseCartQuantity(id: string) {
+  function increaseCartQuantity(itemToInc: ItemProps) {
     setCartItems((currItems) => {
-      if (currItems.find((item) => item.id === id) == null) {
-        return [...currItems, { id, quantity: 1 }];
+      if (currItems.find((item) => item.id === itemToInc.id) == null) {
+        return [
+          ...currItems,
+          {
+            ...itemToInc,
+            quantity: 1,
+          },
+        ];
       } else {
         return currItems.map((item) => {
-          if (item.id === id) {
+          if (item.id === itemToInc.id) {
             return { ...item, quantity: item.quantity + 1 };
           } else {
             return item;
@@ -93,6 +107,7 @@ export function CartProvider({ children }: CartProviderProps) {
         openCart,
         closeCart,
         cartQuantity,
+        cartItems,
       }}
     >
       {children}
