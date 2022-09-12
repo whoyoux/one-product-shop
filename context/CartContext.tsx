@@ -1,6 +1,8 @@
 import { useContext, createContext, ReactNode, useState } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
+const MAX_PRODUCTS_IN_CART = 15;
+
 type CartProviderProps = {
   children: ReactNode;
 };
@@ -71,6 +73,7 @@ export function CartProvider({ children }: CartProviderProps) {
       } else {
         return currItems.map((item) => {
           if (item.id === itemToInc.id) {
+            if (item.quantity >= MAX_PRODUCTS_IN_CART) return item;
             return { ...item, quantity: item.quantity + 1 };
           } else {
             return item;

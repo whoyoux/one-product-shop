@@ -46,9 +46,11 @@ const Home: NextPage = () => {
 
           <h2 className="text-3xl font-title my-5 md:my-10">$ 999</h2>
 
-          <h4 className="mb-4 text-gray-500">Free shipping to EU countries</h4>
+          <h4 className="mb-4 text-gray-500 text-sm italic">
+            Free shipping to EU countries.
+          </h4>
           <button
-            className="flex items-center gap-2 p-4 bg-red-500 rounded-lg text-white hover:bg-red-600 mb-20 md:mb-0"
+            className="select-none flex items-center gap-2 p-4 bg-red-500 rounded-lg text-white hover:bg-red-600 mb-20 md:mb-0"
             onClick={() => increaseCartQuantity(product)}
           >
             Add to cart <ShoppingCartSimple size={16} weight="bold" />

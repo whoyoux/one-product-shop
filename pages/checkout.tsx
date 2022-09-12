@@ -68,7 +68,16 @@ const Checkout: NextPage = () => {
           </div>
           <div className="w-full flex justify-between text-xl py-4">
             <h2>Total is: </h2>
-            <h2 className="font-medium">$ {cartTotalValue}</h2>
+            <div className="flex flex-col text-right">
+              <h2 className="text-sm text-gray-800">
+                subtotal ${cartTotalValue}
+              </h2>
+              <h2 className="text-sm text-gray-800">shipping $15</h2>
+              <h2 className="text-sm text-gray-800">tax $20</h2>
+              <h2 className="font-medium text-2xl">
+                Total ${cartTotalValue + 35}
+              </h2>
+            </div>
           </div>
           {/* <div className="flex gap-2">
             <input
