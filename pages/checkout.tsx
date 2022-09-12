@@ -50,8 +50,9 @@ const Checkout: NextPage = () => {
                       {getItemQuantity(item.id)}
                     </div>
                     <button
-                      className="w-12 md:w-10 h-full bg-red-500 rounded-lg text-white flex items-center justify-center cursor-pointer select-none"
+                      className="disabled:cursor-not-allowed w-12 md:w-10 h-full bg-red-500 rounded-lg text-white flex items-center justify-center cursor-pointer select-none"
                       onClick={() => increaseCartQuantity(item)}
+                      disabled={getItemQuantity(item.id) === 15}
                     >
                       <Plus size={16} color="white" weight="bold" />
                     </button>
