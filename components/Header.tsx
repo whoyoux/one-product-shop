@@ -60,6 +60,9 @@ const Header = () => {
             <li className="cursor-pointer hover:bg-gray-200 rounded-lg p-5">
               Returns
             </li>
+            <li className="cursor-pointer hover:bg-gray-200 rounded-lg p-5">
+              Contact
+            </li>
           </ul>
         </div>
       )}

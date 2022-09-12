@@ -18,7 +18,7 @@ const Checkout: NextPage = () => {
       {!cartItems || cartItems?.length <= 0 ? (
         <h1>Your cart is empty :( </h1>
       ) : (
-        <div className="w-full max-w-xl bg-white shadow-lg h-72 rounded-lg p-5 flex flex-col gap-2">
+        <div className="w-full max-w-xl bg-white shadow-lg h-min rounded-lg p-5 flex flex-col gap-2">
           <div className="flex-1 flex items-center">
             {cartItems?.map((item) => (
               <div
