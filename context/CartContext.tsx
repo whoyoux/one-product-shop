@@ -24,6 +24,7 @@ type ICartContext = {
   increaseCartQuantity: (id: ItemProps) => void;
   decreaseCartQuantity: (id: string) => void;
   removeFromCart: (id: string) => void;
+  setItemQuantity: (id: string, qty: number) => void;
   cartQuantity: number;
   cartTotalValue: number;
   clear: () => void;
@@ -53,7 +54,7 @@ export function CartProvider({ children }: CartProviderProps) {
 
   const cartTotalValue =
     cartItems?.reduce(
-      (acc, currentItem) => acc + currentItem.price * currentItem.quantity,
+      (totalValue, item) => totalValue + item.price * item.quantity,
       0
     ) || 0;
 
@@ -99,6 +100,19 @@ export function CartProvider({ children }: CartProviderProps) {
     });
   }
 
+  function setItemQuantity(id: string, qty: number) {
+    if (qty < 1 || qty > 99) return;
+    setCartItems((currItems) => {
+      return currItems.map((item) => {
+        if (item.id === id) {
+          return { ...item, quantity: qty };
+        } else {
+          return item;
+        }
+      });
+    });
+  }
+
   const clear = () => setCartItems([]);
 
   return (
@@ -114,6 +128,7 @@ export function CartProvider({ children }: CartProviderProps) {
         cartQuantity,
         cartTotalValue,
         cartItems,
+        setItemQuantity,
       }}
     >
       {children}
