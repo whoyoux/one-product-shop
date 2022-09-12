@@ -47,17 +47,17 @@ const Header = () => {
           >
             <X size={32} weight="bold" />
           </button>
-          <ul className="text-xl text-center gap-10 flex flex-col">
-            <li className="cursor-pointer hover:bg-gray-200 rounded-lg">
+          <ul className="text-xl text-center gap-5 flex flex-col">
+            <li className="cursor-pointer hover:bg-gray-200 rounded-lg p-5">
               Homepage
             </li>
-            <li className="cursor-pointer hover:bg-gray-200 rounded-lg">
+            <li className="cursor-pointer hover:bg-gray-200 rounded-lg p-5">
               Checkout
             </li>
-            <li className="cursor-pointer hover:bg-gray-200 rounded-lg">
+            <li className="cursor-pointer hover:bg-gray-200 rounded-lg p-5">
               Terms and conditions
             </li>
-            <li className="cursor-pointer hover:bg-gray-200 rounded-lg">
+            <li className="cursor-pointer hover:bg-gray-200 rounded-lg p-5">
               Returns
             </li>
           </ul>

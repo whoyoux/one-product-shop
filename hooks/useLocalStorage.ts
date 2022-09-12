@@ -4,10 +4,10 @@ export function useLocalStorage<T>(key: string, initialValue: T | (() => T)) {
   const isBrowser: boolean = ((): boolean => typeof window !== "undefined")();
 
   const [value, setValue] = useState<T>(() => {
-    if (!isBrowser) return;
+    if (!isBrowser) return initialValue;
 
     const jsonValue = localStorage.getItem(key);
-    if (jsonValue != null) return JSON.parse(jsonValue);
+    if (jsonValue !== null) return JSON.parse(jsonValue);
 
     if (typeof initialValue === "function") {
       return (initialValue as () => T)();
@@ -17,7 +17,7 @@ export function useLocalStorage<T>(key: string, initialValue: T | (() => T)) {
   });
 
   useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(value));
+    isBrowser && localStorage.setItem(key, JSON.stringify(value));
   }, [key, value]);
 
   return [value, setValue] as [typeof value, typeof setValue];

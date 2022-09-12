@@ -1,6 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 
+import Image from "next/future/image";
+
 import { ShoppingCartSimple } from "phosphor-react";
 import { useEffect } from "react";
 import { useCartContext } from "../context/CartContext";
@@ -13,6 +15,7 @@ const product = {
     "https://files.stripe.com/links/MDB8YWNjdF8xSzk3Vk1McE9ySGZxYzZHfGZsX3Rlc3RfSEQ1VnVDTGRxODlkclVoblNRajlpZWlY005onTxPIM",
   ],
   name: "IPhone 14 Pro Max",
+  price: 5,
 };
 
 const Home: NextPage = () => {

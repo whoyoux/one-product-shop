@@ -11,6 +11,7 @@ type ItemProps = {
   description: string;
   images: string[];
   active: boolean;
+  price: number;
 };
 
 interface CartItemProps extends ItemProps {
@@ -24,6 +25,7 @@ type ICartContext = {
   decreaseCartQuantity: (id: string) => void;
   removeFromCart: (id: string) => void;
   cartQuantity: number;
+  cartTotalValue: number;
   clear: () => void;
   openCart: () => void;
   closeCart: () => void;
@@ -37,10 +39,7 @@ export function useCartContext() {
 
 export function CartProvider({ children }: CartProviderProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [cartItems, setCartItems] = useLocalStorage<CartItemProps[]>(
-    "cart",
-    []
-  );
+  const [cartItems, setCartItems] = useState<CartItemProps[]>([]);
 
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);
@@ -51,6 +50,12 @@ export function CartProvider({ children }: CartProviderProps) {
 
   const cartQuantity =
     cartItems?.reduce((quantity, item) => item.quantity + quantity, 0) || 0;
+
+  const cartTotalValue =
+    cartItems?.reduce(
+      (acc, currentItem) => acc + currentItem.price * currentItem.quantity,
+      0
+    ) || 0;
 
   function increaseCartQuantity(itemToInc: ItemProps) {
     setCartItems((currItems) => {
@@ -107,6 +112,7 @@ export function CartProvider({ children }: CartProviderProps) {
         openCart,
         closeCart,
         cartQuantity,
+        cartTotalValue,
         cartItems,
       }}
     >
